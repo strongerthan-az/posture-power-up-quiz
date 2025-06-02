@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Posture Power-Up Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .quiz-container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e0f7fa;
+      border-left: 5px solid #00796b;
+      border-radius: 6px;
+      display: none;
+      white-space: pre-line;
+    }
+    .visual-summary {
+      margin-top: 30px;
+      text-align: center;
+      display: none;
+    }
+    .visual-summary h3 {
+      margin-bottom: 10px;
+    }
+    .visual-summary img {
+      width: 30%;
+      max-width: 120px;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>📏 Posture Power-Up Quiz</h1>
+
+    <div class="question">
+      <label for="walkStyle">How do you usually walk through public spaces?</label>
+      <select id="walkStyle">
+        <option value="headDown">Head down, eyes on the ground</option>
+        <option value="neutral">Neutral, casual pace with glances around</option>
+        <option value="purposeful">Upright, purposeful, scanning occasionally</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label for="phoneUse">How do you usually use your phone in public?</label>
+      <select id="phoneUse">
+        <option value="zonedOut">Headphones in, totally zoned out</option>
+        <option value="frequentChecks">Frequent checking, usually looking down</option>
+        <option value="strategic">Chest level, glance up regularly, quick use</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label for="bodyFeel">What does your body feel like when walking alone?</label>
+      <select id="bodyFeel">
+        <option value="closedOff">Tense or closed-off</option>
+        <option value="neutral">Neutral, but not really intentional</option>
+        <option value="aware">Grounded and intentional</option>
+      </select>
+    </div>
+
+    <button onclick="generateFeedback()">Get My Power-Up Tips</button>
+
+    <div class="result" id="feedbackBox"></div>
+
+    <div class="visual-summary" id="visualSummary">
+      <h3>🔍 Visual Recap: Which Posture Are You Closest To?</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Poor_posture_while_using_a_mobile_phone.jpg" alt="Collapsed posture" title="Collapsed">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Posture-neutral-standing.svg" alt="Neutral posture" title="Neutral">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Good_posture.svg" alt="Powerful posture" title="Powerful">
+      <p>Use a mirror or your phone camera to check in and recalibrate.</p>
+    </div>
+  </div>
+
+  <script>
+    function generateFeedback() {
+      const walk = document.getElementById("walkStyle").value;
+      const phone = document.getElementById("phoneUse").value;
+      const feel = document.getElementById("bodyFeel").value;
+      const feedbackBox = document.getElementById("feedbackBox");
+      const visualSummary = document.getElementById("visualSummary");
+
+      let feedback = "🎯 Posture Power-Up Tips:\n\n";
+
+      if (walk === "headDown") {
+        feedback += "• Try lifting your head and making brief eye sweeps ahead every 5–10 seconds.\n";
+      } else if (walk === "neutral") {
+        feedback += "• Great start—add some purpose to your stride and scan exits or movement patterns.\n";
+      } else {
+        feedback += "• Excellent—you're already walking with intention and presence.\n";
+      }
+
+      if (phone === "zonedOut") {
+        feedback += "• Avoid total tunnel vision with earbuds—keep one ear open if possible.\n";
+      } else if (phone === "frequentChecks") {
+        feedback += "• Try raising your phone to chest level to keep your field of view open.\n";
+      } else {
+        feedback += "• You’re using your phone wisely—keep it up.\n";
+      }
+
+      if (feel === "closedOff") {
+        feedback += "• Check in with your shoulders, breath, and posture. Open up and ground yourself.\n";
+      } else if (feel === "neutral") {
+        feedback += "• Try adding a small power posture reset before entering unfamiliar places.\n";
+      } else {
+        feedback += "• You’ve built strong body awareness—trust your instincts.\n";
+      }
+
+      feedbackBox.innerText = feedback;
+      feedbackBox.style.display = "block";
+      visualSummary.style.display = "block";
+    }
+  </script>
+</body>
+</html>
